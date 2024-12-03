@@ -1,69 +1,67 @@
 #include <graphics.h>
-#include <math.h>
-#include <stdlib.h>
+#include <stdio.h>
+#include <conio.h>
 
-#define PI 3.14159265358979323846
-
-void drawBallBearing() {
-    int gd = DETECT, gm;
-    initgraph(&gd, &gm, (char*)"");
-
-    // Get screen dimensions
-    int width = getmaxx();
-    int height = getmaxy();
-
-    // Define center of the screen
-    int centerX = width / 2;
-    int centerY = height / 2;
-
-    // Define inner and outer circle radii
-    int outerRadius = (height < width ? height : width) * 0.4;
-    int innerRadius = outerRadius * 0.6;
-
-    // Set colors
-    int backgroundColor = WHITE;
-    int circleColor = BLUE;
-    int ballColor = RED;
-
-    // Clear screen
-    setbkcolor(backgroundColor);
-    cleardevice();
-
-    // Draw outer and inner circles
-    setcolor(circleColor);
-    circle(centerX, centerY, outerRadius);
-    circle(centerX, centerY, innerRadius);
-
-    // Calculate number of balls and ball radius
-    // Use trigonometry to ensure balls touch each other
-    int numBalls = 12;
-    
-    // Ball radius calculation to ensure complete contact
-    float ballRadius = (outerRadius - innerRadius) / 2;
-    float middleRadius = (outerRadius + innerRadius) / 2;
-
-    // Draw balls
-    setcolor(ballColor);
-    setfillstyle(SOLID_FILL, ballColor);
-
-    for (int i = 0; i < numBalls; i++) {
-        // Calculate precise ball position
-        float angle = 2 * PI * i / numBalls;
-        int ballCenterX = centerX + middleRadius * cos(angle);
-        int ballCenterY = centerY + middleRadius * sin(angle);
-
-        // Draw filled circle for each ball
-        fillellipse(ballCenterX, ballCenterY, ballRadius, ballRadius);
-    }
-
-    // Wait for a key press
-    getch();
-
-    // Close graphics
-    closegraph();
-}
 
 int main() {
-    drawBallBearing();
-    return 0;
+	int gd = DETECT, gm, color;
+	initgraph(&gd, &gm, (char*)"");
+	
+	setcolor(LIGHTGRAY);
+	circle(300, 300, 150);
+	setfillstyle(SOLID_FILL, LIGHTGRAY);
+	floodfill(300,300,LIGHTGRAY);
+	
+	setcolor(WHITE);
+	circle(300, 300, 75);
+	setfillstyle(SOLID_FILL, WHITE);
+	floodfill(300, 300, WHITE);
+	
+	//inner circle
+	setcolor(BLUE);
+	circle(412.5, 300, 37.5);
+	setfillstyle(SOLID_FILL, BLUE);
+	floodfill(412.5, 300, BLUE);
+	
+	setcolor(YELLOW);
+	circle(187.5, 300, 37.5);
+	setfillstyle(SOLID_FILL, YELLOW);
+	floodfill(187.5, 300, YELLOW);
+	
+	setcolor(RED);
+	circle(300, 412.5, 37.5);
+	setfillstyle(SOLID_FILL, RED);
+	floodfill(300, 412.5, RED);
+	
+	int violet = COLOR(148,0,211);
+	setcolor(violet);
+	circle(300, 187.5, 37.5);
+	setfillstyle(SOLID_FILL, violet);
+	floodfill(300, 187.5, violet);
+	
+	setcolor(GREEN);
+	circle(379.55, 379.55, 37.5);
+	setfillstyle(SOLID_FILL, GREEN);
+	floodfill(379.55, 379.55, GREEN);
+	
+	setcolor(LIGHTCYAN);
+	circle(220.45, 379.55, 37.5);
+	setfillstyle(SOLID_FILL, LIGHTCYAN);
+	floodfill(220.45, 379.55, LIGHTCYAN);
+	
+	int orange = COLOR(255,165,0);
+	setcolor(orange);
+	circle(220.45, 220.45, 37.5);
+	setfillstyle(SOLID_FILL, orange);
+	floodfill(220.45, 220.45, orange);
+	
+	int indigo = COLOR(75,0,130);
+	setcolor(indigo);
+	circle(379.55, 220.45, 37.5);
+	setfillstyle(SOLID_FILL, indigo);
+	floodfill(379.55, 220.45, indigo);
+	
+	getch();
+	closegraph();
+	return 0;
 }
